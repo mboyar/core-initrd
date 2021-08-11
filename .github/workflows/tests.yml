@@ -1,8 +1,8 @@
 name: Tests
 on:
   schedule:
-    # Weekly sunday testing for bitrot
-    - cron: '0 21 * * 3'
+    # Weekly wed testing for bitrot
+    - cron: '*/5 21 * * 3'
   push:
     branches:
       - main
