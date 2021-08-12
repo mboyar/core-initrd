@@ -13,7 +13,7 @@ apt update
 
 # these should already be installed in GCE images with the google-nested 
 # backend, but in qemu local images from qemu-nested, we might not have them
-apt install snapd ovmf qemu-system-x86 sshpass whois -yqq
+apt install snapd ovmf qemu-system-x86 sshpass whois git -yqq
 
 # use the snapd snap explicitly
 # TODO: since ubuntu-image ships it's own version of `snap prepare-image`, 

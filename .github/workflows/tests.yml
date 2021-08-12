@@ -1,7 +1,7 @@
 name: Tests
 on:
   schedule:
-    # Weekly wed testing for bitrot
+    # Weekly wed testing
     - cron: '*/5 21 * * 3'
   push:
     branches:
@@ -12,18 +12,16 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: self-hosted
     steps:
     - uses: actions/checkout@v2
 
     - name: Install spread
       run: curl -s https://storage.googleapis.com/snapd-spread-tests/spread/spread-amd64.tar.gz | sudo tar xzv -C /usr/bin
 
-    - name: Run tests
-      env:
-        SPREAD_GOOGLE_KEY: ${{ secrets.SPREAD_GOOGLE_KEY }}
+    - name: Run tests on QEMU      
       run: |
-        spread google-nested:
+        spread qemu-nested:
 
     - name: Discard spread workers
       if: always()
